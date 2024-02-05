@@ -44,6 +44,7 @@ const Shopcategory = (props) => {
           <h1>
             Define different UI components or content based on the category
           </h1>
+          <h2>This page is changed now</h2>
           <button onClick={()=>{showalert()}}>SHOW ALERT</button>
           <div className=" fixed  top-0 w-full">
             <LoginModal></LoginModal>
