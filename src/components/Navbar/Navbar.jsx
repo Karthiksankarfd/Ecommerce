@@ -86,12 +86,12 @@ const Navbar = () => {
 
         <section className="lg:flex lg:gap-x-10 sm:hidden ">
           {/* for pages */}
-          <Link to="/myorder"></Link>
-          <NavLink to="/" style={navlinkStyle}>
-            Shop{" "}
+          {/* <Link to="/myorder"></Link> */}
+          <NavLink to="/ecommerce" style={navlinkStyle}>
+            Shop
           </NavLink>
           <NavLink to="/men" style={navlinkStyle}>
-            Men{" "}
+            Men
           </NavLink>
           <NavLink to="/women" style={navlinkStyle}>
             Women

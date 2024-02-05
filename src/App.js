@@ -33,12 +33,13 @@ function App() {
           <Shopcontextprovider>
             <Navbar />
             <Routes>
+              <Route path="/ecommerce" element={<Shop/>} />
               <Route path="/profile" element={<Profile />}>
                 <Route index element={<Overview />} />
                 <Route path="Coupons" element={<Coupons />} />
               </Route>
-              <Route path="/login" element={<LoginPage/>} />
-              <Route path="/" element={<Shop />} />
+              <Route path="/login" element={<LoginPage />} />
+
               <Route path="/men" element={<Shopcategory category="men" />} />
               <Route
                 path="/women"
@@ -52,7 +53,13 @@ function App() {
               <Route path="/product" element={<Product />} />
 
               <Route
-                path="/cart" element={<Requiredauth><Cart/></Requiredauth>}/>
+                path="/cart"
+                element={
+                  <Requiredauth>
+                    <Cart />
+                  </Requiredauth>
+                }
+              />
 
               {/* for productdetail page */}
 
