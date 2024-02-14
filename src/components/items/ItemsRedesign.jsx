@@ -47,8 +47,8 @@ const ItemsRedesign = () => {
           <>
             <div className="lg:h-auto lg:w-96 md:w-72 sm:w-full relative border-2 p-5 flex flex-col gap-y-3">
               <div className="w-full h-52  object-contain">
-                <Link to="/productDetail">
-                  <img
+                <Link to="/productDetail" >
+                  <img 
                     src={item.images[1]}
                     alt=""
                     className="w-full h-52  object-contain"

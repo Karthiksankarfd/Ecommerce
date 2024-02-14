@@ -7,6 +7,7 @@ import { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Rating from "../components/Rating/Rating";
+import LoginModal from "../components/Modal/LoginModal";
 const Productdetails = () => {
 
   // for scrolling the page when the user clicks the product 
@@ -22,10 +23,10 @@ const Productdetails = () => {
   const { productDetail, addTocart } = useContext(Shopcontext);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 1, x: -200 }}
+      <motion.div target="_blank"
+        initial={{ opacity: 1, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 1 }}
       >
         <div className="lg:flex border-2 sm:block gap-x-3">
           <div className="primary_container lg:w-1/2 sm:w-full md:w-full">
@@ -102,7 +103,9 @@ const Productdetails = () => {
       <div className="similiar_product">
         <SimiliarProduct />
       </div>
-    
+      <div className=" fixed  top-0 w-full">
+          <LoginModal></LoginModal>
+        </div>
     </>
   );
 };

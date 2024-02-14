@@ -8,6 +8,7 @@ import Cartalert from "../components/Modal/Cartalert";
 import { Shopcontext } from "../context/Shopcontextvar";
 import { motion } from "framer-motion";
 import Mainfooter from "./Mainfooter";
+import Rating from "../components/Rating/Rating";
 const Shop = () => {
   const { showAlert } = useContext(Shopcontext);
   // const auth = useAuth();
@@ -30,6 +31,8 @@ const Shop = () => {
           </div>
         )}
       </div>
+
+      {/* <Rating/> */}
     </>
   );
 };

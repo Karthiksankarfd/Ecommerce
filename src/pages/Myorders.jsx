@@ -29,7 +29,7 @@ const Myorders = () => {
                   </button>
                 </div>
 
-                <div className="w-full border-2 border-black h-24 lg:flex lg:flex-row sm:hidden  justify-start items-center py-5 px-5 gap-y-2 mb-2">
+                <div className="w-full border-2 border-black h-24 lg:hidden lg:flex-row sm:hidden  justify-start items-center py-5 px-5 gap-y-2 mb-2">
                   {/* round */}
                   <div className="w-4 h-4 bg-black rounded-full flex justify-center items-center ">
                     <div className="w-1 h-1 bg-white rounded-full "></div>
@@ -55,7 +55,7 @@ const Myorders = () => {
                 
                 </div>
 
-                <div className="mobileview lg:hidden md:flex sm:flex flex-col w-full px-2 justify-center items-start py-5">
+                <div className="mobileview lg:flex md:flex sm:flex flex-col w-full px-2 justify-center items-start py-5">
                   <div className="point flex w-full justify-start items-center ">
                     <div className="text-xs w-4 h-4 bg-green-400 rounded-full border-2 border-green-500 flex justify-center items-center"> <FaCheck/></div>
                     <div className="text-xs pl-5">Order Confirmed , On Jan 30</div>

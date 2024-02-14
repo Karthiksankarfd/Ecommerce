@@ -33,7 +33,7 @@ function App() {
           <Shopcontextprovider>
             <Navbar />
             <Routes>
-              <Route path="/ecommerce" element={<Shop/>} />
+              <Route path="/" element={<Shop/>} />
               <Route path="/profile" element={<Profile />}>
                 <Route index element={<Overview />} />
                 <Route path="Coupons" element={<Coupons />} />

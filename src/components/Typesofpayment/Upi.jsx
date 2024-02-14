@@ -23,7 +23,7 @@ const Upi = () => {
             <div className='flex gap-x-5'>
                 <input type="radio" className='group-focus:checked:checked' />
                 <div className='h-14 w-14 '>
-                    <img className='h-14 w-14 object-contain' src="https://cdn141.picsart.com/363807473021211.png" alt="" />
+                    <img className='h-14 w-14 object-contain' src="https://logodix.com/logo/1763560.png" alt="" />
                 </div>
             </div>
 

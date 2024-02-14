@@ -92,3 +92,10 @@ overflow-x: hidden;}
 .hyperlinks,.Social_media_links{
   height:150px;
 }
+.thumbs-wrapper{
+  display:none;
+}
+
+.slider {
+  height:450px;
+}

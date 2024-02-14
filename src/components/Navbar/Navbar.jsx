@@ -87,7 +87,7 @@ const Navbar = () => {
         <section className="lg:flex lg:gap-x-10 sm:hidden ">
           {/* for pages */}
           {/* <Link to="/myorder"></Link> */}
-          <NavLink to="/ecommerce" style={navlinkStyle}>
+          <NavLink to="/" style={navlinkStyle}>
             Shop
           </NavLink>
           <NavLink to="/men" style={navlinkStyle}>
@@ -103,7 +103,7 @@ const Navbar = () => {
 
         <section className="flex gap-x-5">
           {/* if the user is not logged in show the modal  */}
-        <Link to="/login">
+        <Link >
         {!auth.user ? (
             <button
               className="text-white lg:block sm:hidden animate-pulse"
