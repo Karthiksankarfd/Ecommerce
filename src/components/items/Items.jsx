@@ -132,7 +132,7 @@ const Items = () => {
       </div>
 
       <div className="">
-        {/* Render your other content here */}
+        {/* Render  other content here */}
         {/* <LoginModal></LoginModal> */}
       </div>
     </>

@@ -8,40 +8,52 @@ import data from "../components/Data/Jsondata";
 import { motion } from "framer-motion";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import Mainfooter from "./Mainfooter";
+import { useAuth } from "../components/Authenticationcontext/Logincontext.jsx/LogincontexProvider";
+import Cartalert from "../components/Modal/Cartalert";
 const Shopcategory = (props) => {
+  // invoking useauth
+  const auth = useAuth();
+
   // invoking the shopcontext
-  const { productDetail, addTocart } = useContext(Shopcontext);
-  // console.log(eledata);
+  const {
+    productDetail,
+    addTocart,
+    cart,
+    setShowAlert,
+    showAlert,
+    viewProduct,
+  } = useContext(Shopcontext);
+
   // The value of 'category' prop can be accessed using props.category
   const { category } = props;
-
-  // const items = props.productqwerty
-  // console.log(items)
-
-  // function showAlert() {
-  //   var userConfirmation = window.confirm("Do you want to perform something?");
-
-  //   if (userConfirmation) {
-  //     // Perform your action here when user clicks "OK"
-  //     alert("Action performed!");
-  //   } else {
-  //     // Action when user clicks "Cancel" or closes the dialog
-  //     alert("Action canceled.");
-  //   }
-  // }
 
   // Define different UI components or content based on the category
   let categoryContent;
 
+  let removeduplicate = cart.map((cartitem) => {
+    return cartitem.id;
+  });
+
+  const handlePrompt = (data) => {
+    if (auth.user) {
+      window.confirm(data);
+    } else {
+      window.alert("Please Sign In To Add Product to Cart");
+      auth.openModal();
+    }
+  };
+
   if (category === "men") {
     categoryContent = (
       <>
-         <motion.div initial={{ opacity: 1, y: -200 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}>
-            <Menssection />
+        <motion.div
+          initial={{ opacity: 1, y: -200 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Menssection />
         </motion.div>
-        
+
         {/* <button onClick={()=>{showalert()}}>SHOW ALERT</button> */}
         <div className=" fixed  top-0 w-full">
           <LoginModal></LoginModal>
@@ -56,9 +68,9 @@ const Shopcategory = (props) => {
                       src={item.image}
                       alt=""
                       className="w-full h-52  object-contain"
-                      // onClick={() => {
-                      //   viewProduct(item);
-                      // }}
+                      onClick={() => {
+                        viewProduct(item);
+                      }}
                     />
                   </Link>
                 </div>
@@ -81,20 +93,22 @@ const Shopcategory = (props) => {
                 <div className="flex  lg:flex-row sm:flex-row sm:justify-start gap-y-3 gap-x-3 ">
                   <button
                     className=" text-black mr-4  py-1 hover:text-green-400 transition duration-150 sm:w-fit sm:block lg:block lg:w-fit"
-                    // onClick={() => {
-                    //   // Check if the item is already in the cart
-                    //   // for that we have to use includes method to check the array has the item
-                    //   if (removeduplicate.includes(item.id)) {
-                    //     // Display a custom alert using a div element
-                    //     // This assumes you are using a React component
-                    //     setShowAlert(true);
-                    //   } else {
-                    //     // Add the item to the cart if not already present
-                    //     addTocart(item);
-                    //     handlePrompt(`${item.title} was added to the cart`);
-                    //     // You may want to return or render something else after adding to the cart
-                    //   }
-                    // }}
+                    onClick={() => {
+                      // Check if the item is already in the cart
+                      // for that we have to use includes method to check the array has the item
+                      if (removeduplicate.includes(item.id)) {
+                        // Display a custom alert using a div element
+                        // This assumes you are using a React component
+                        setShowAlert(true);
+                      } else {
+                        // Add the item to the cart if not already present
+                        addTocart(item);
+                        handlePrompt(
+                          `${item.title || item.name}  was added to the cart`
+                        );
+                        // You may want to return or render something else after adding to the cart
+                      }
+                    }}
                   >
                     <FaShoppingCart />
                   </button>
@@ -112,7 +126,12 @@ const Shopcategory = (props) => {
             </>
           ))}
         </div>
-        <Mainfooter/>
+        <Mainfooter />
+        {showAlert && (
+          <div className=" fixed  top-0 w-full ">
+            <Cartalert />
+          </div>
+        )}
       </>
     );
   } else if (category === "women") {
@@ -138,8 +157,6 @@ const Shopcategory = (props) => {
         <div className=" fixed  top-0 w-full">
           <LoginModal></LoginModal>
         </div>
-
-       
       </>
     );
   }

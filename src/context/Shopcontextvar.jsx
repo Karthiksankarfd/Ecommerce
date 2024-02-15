@@ -75,13 +75,12 @@ const ShopcontextProvider = (props) => {
 
   // View product function
   const viewProduct = (ProductInfo) => {
-    setProductDetail((prev) => [ProductInfo]);
+    setProductDetail(() => [ProductInfo]);
     console.log(productDetail, "showing product details ");
   };
   let TotalItems = Object.keys(cart).length;
 
   // code for wishlist
-
   const addtowishlist = (wishlistitem) => {
     setWishlist((prevArray) => [...prevArray, wishlistitem]);
   };
@@ -126,3 +125,5 @@ const ShopcontextProvider = (props) => {
 };
 
 export default ShopcontextProvider;
+
+

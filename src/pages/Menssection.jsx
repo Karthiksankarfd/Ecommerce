@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import banner from "../components/Assets/banner.jpg";
+import { Shopcontext } from "../context/Shopcontextvar";
 const Menssection = () => {
+
+  const {addTocart} =useContext(Shopcontext)
   return (
     <div className="mens_main_container">
       <Carousel
