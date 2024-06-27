@@ -11,7 +11,7 @@ const ItemsRedesign = () => {
   // login context
   const auth = useAuth();
 
-  const { data, addTocart, viewProduct, addtowishlist, cart, setShowAlert } =
+  const { data, addTocart, viewProduct, addtowishlist, cart, setShowAlert,setShowAlertForCartItem,add } =
     useContext(Shopcontext);
   // existingData.newKey = 'newValue';
 
@@ -19,7 +19,7 @@ const ItemsRedesign = () => {
     return cartitem.id;
   });
 
-  // console.log(removeduplicate); 
+  // console.log(removeduplicate);
 
   const handlePrompt = (data) => {
     if (auth.user) {
@@ -30,25 +30,33 @@ const ItemsRedesign = () => {
     }
   };
 
+  // const handleaddtowishlist=(data)=>{
+  //   setShowAlertForCartItem( true && data)
+  // }
+
   if (!data) {
-    // i will Handle loading state, we can use a loading spinner or any other UI indication
+    //! i will Handle loading state, we can use a loading spinner or any other UI indication
     return <div>Loading...</div>;
   }
 
   return (
     <>
+    {/*//! make it 3d perspective on hover  */}
       <h3 className="pl-4 text-2xl text-neutral-500  underline underline-offset-8 w-full text-center py-5 scroll-smooth">
         Top Sellers
       </h3>
-
+      {/* <a href="#topseller"></a> */}
       {/* main product grid-container */}
       <div className="grid-container-main flex justify-center  sm:flex-col sm:px-5 md:flex-row md:flex-wrap lg:flex-row lg:flex-wrap w-full  gap-x-5 gap-y-5">
         {data.map((item) => (
           <>
-            <div className="lg:h-auto lg:w-96 md:w-72 sm:w-full relative border-2 p-5 flex flex-col gap-y-3">
-              <div className="w-full h-52  object-contain">
-                <Link to="/productDetail" >
-                  <img 
+            <div
+              key={item.id}
+              className="lg:h-auto lg:w-96 md:w-72 sm:w-full relative border-2 p-5 flex flex-col gap-y-3"
+            >
+              <div  key={item.id} className="w-full h-52  object-contain ">
+                <Link to="/productDetail">
+                  <img  key={item.id}
                     src={item.images[1]}
                     alt=""
                     className="w-full h-52  object-contain"
@@ -66,10 +74,10 @@ const ItemsRedesign = () => {
                 </h5>
                 <div className="flex items-center gap-x-4 ">
                   <p className="font-bold text-sm">
-                    price : ₹ {item.price * 10}/.
+                    price : ₹ {item.price * 4}/.
                   </p>
                   <p className="font-thin text-xs line-through text-green-400">
-                    MRP : {item.price * 4}/.
+                    MRP : {item.price * 10}/.
                   </p>
                 </div>
               </div>
@@ -84,11 +92,11 @@ const ItemsRedesign = () => {
                       // Display a custom alert using a div element
                       // This assumes you are using a React component
                       setShowAlert(true);
-                    } else {
+                    } else {  
                       // Add the item to the cart if not already present
                       addTocart(item);
                       handlePrompt(`${item.title} was added to the cart`);
-                      // You may want to return or render something else after adding to the cart
+                      //! i  want to return or render something else after adding to the cart
                     }
                   }}
                 >
@@ -99,6 +107,7 @@ const ItemsRedesign = () => {
                   onClick={() => {
                     addtowishlist(item);
                     console.log("adding to wishlist");
+                    setShowAlertForCartItem(true)
                   }}
                 >
                   <FaHeart />
@@ -117,3 +126,5 @@ const ItemsRedesign = () => {
 };
 
 export default ItemsRedesign;
+
+

@@ -38,13 +38,15 @@ const Productdetails = () => {
                     key={item.id}
                   >
                     <div className="image_gallery flex flex-row w-auto sm:w-full lg:flex-wrap sm:overflow-y-scroll md:overflow-y-scroll gap-5 p-5 ">
-                      {item.images.map((image) => {
+                      {(item.images).map((image) => {
                         return (
                           <>
                             <img src={image} alt="" className="h-64" />
+                           
                           </>
                         );
-                      })}
+                      }) }
+                      
                     </div>
                   </div>
                 </>
@@ -84,7 +86,7 @@ const Productdetails = () => {
                   </h3>
                 </div>
                 <h3 className="text-xl py-2">Product Description</h3>
-                <p className="text-sm sm:block lg:block ">{item.description}</p>
+                <p className="text-sm sm:block lg:block ">{item.description || item.productDetail}</p>
               </>
             ))}
           </div>

@@ -79,7 +79,7 @@ const Navbar = () => {
           <input
             type="search"
             placeholder="search"
-            className=" rounded-full sm:h-8 sm:w-44 sm:placeholder-px-5  focus:outline-none pl-9 lg:pb-1 lg:w-56"
+            className=" rounded-full sm:h-8 sm:w-44 sm:placeholder-px-5  focus:outline-none pl-9 pr-9 lg:pb-1 lg:w-56"
           />
           <FaSearch className="search-icon absolute top-2 left-3 " />
         </section>
@@ -194,7 +194,7 @@ const Navbar = () => {
             </h3>
           </NavLink>
           <NavLink
-            to=""
+            to="/men"
             onClick={() => {
               setNavbar(false);
             }}
@@ -202,7 +202,7 @@ const Navbar = () => {
             <h3 className="text-white">Men</h3>
           </NavLink>
           <NavLink
-            to=""
+            to="/women"
             onClick={() => {
               setNavbar(false);
             }}
@@ -210,7 +210,7 @@ const Navbar = () => {
             <h3 className="text-white">Women</h3>
           </NavLink>
           <NavLink
-            to=""
+            to="/kids"
             onClick={() => {
               setNavbar(false);
             }}
@@ -218,12 +218,12 @@ const Navbar = () => {
             <h3 className="text-white">Kids</h3>
           </NavLink>
           <NavLink
-            to="/profile"
+            to="/myorder"
             onClick={() => {
               setNavbar(false);
             }}
           >
-            <h3 className="text-white">My Profile</h3>
+            <h3 className="text-white">My Orders</h3>
           </NavLink>
           <NavLink
             to=""
@@ -253,7 +253,7 @@ const Navbar = () => {
             )}
           </NavLink>
           <NavLink
-            to=""
+            to="/profile"
             onClick={() => {
               setNavbar(false);
             }}

@@ -14,7 +14,6 @@ const Paymentpage = () => {
   const totalPrice = cart.reduce((accumulator, currentItem) => {
     // MISTAKE CODE
     // return accumulator + (currentItem.price * currentItem.quantity  ) || 1 ;
-
     // currentItem.quantity || 1 to handle the case where the quantity is not defined for an item.
     //  This ensures that if currentItem.quantity is falsy, it defaults to 1;
     return accumulator + currentItem.price * (currentItem.quantity || 1);

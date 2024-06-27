@@ -9,6 +9,7 @@ const Myorders = () => {
   const navigate = useNavigate()
   return (
     <>
+    {/* conditionally rendering the  myorders page according to orders lenght */}
       {myOrders.length === 0 ? (
         <></>
       ) : (
@@ -58,19 +59,19 @@ const Myorders = () => {
                 <div className="mobileview lg:flex md:flex sm:flex flex-col w-full px-2 justify-center items-start py-5">
                   <div className="point flex w-full justify-start items-center ">
                     <div className="text-xs w-4 h-4 bg-green-400 rounded-full border-2 border-green-500 flex justify-center items-center"> <FaCheck/></div>
-                    <div className="text-xs pl-5">Order Confirmed , On Jan 30</div>
+                    <div className="text-xs pl-5">Order Confirmed , On  {new Date().toUTCString()}</div>
                   </div>
                   <div className="verticalline border-l-2 border-green-400 h-10 w-0 ml-1.5 "></div>
                   <div className="point flex w-full justify-start items-center ">
                     <div className="text-xs w-4 h-4 bg-green-400 rounded-full border-2 border-green-500 flex justify-center items-center">
                      <FaCheck/>
                     </div>
-                    <div className="text-xs pl-5">Shipped , On jan 31</div>
+                    <div className="text-xs pl-5">Shipped , On {new Date().toUTCString()}</div>
                   </div>
                   <div className="verticalline border-l-2 border-green-400 h-10 w-0 ml-1.5 animate-pulse"></div>
                   <div className="point flex w-full justify-start items-center animate-pulse">
                     <div className="w-4 h-4 bg-green-400 rounded-full border-2 border-green-500"></div>
-                    <div className="text-xs pl-5">Out for delivery , Expected Delivery on 2nd feb</div>
+                    <div className="text-xs pl-5">Out for delivery , Expected Delivery on 22nd feb</div>
                   </div>
                 </div>
 
@@ -93,12 +94,12 @@ const Myorders = () => {
                                 {/* <FaTimes /> */}
                               </button>
                             </div>
-                            <div className="h-32 w-32" key={item.id}>
+                            <div className="h-32 w-32 object-contain" key={item.id}>
                               {/* product image */}
-                              <img src={item.images[0]} alt="" />
+                              <img  className="h-32 w-32 object-contain" src={(item.images || item.image)} alt="" />
                             </div>
                           </div>
-                          <div className="productinfo ">
+                          <div className="productinfo px-4 py-2">
                             <div className="">
                               {/* product info */}
 
@@ -107,7 +108,7 @@ const Myorders = () => {
                                   {item.title}
                                 </h3>
                                 <p className="text-xs font-thin">
-                                  {item.description.substring(0, 70)}...
+                                  {(item.description || item.productdetails).substring(0, 70)}...
                                 </p>
                               </div>
 

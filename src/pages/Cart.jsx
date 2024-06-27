@@ -175,7 +175,7 @@ const Cart = () => {
                             </div>
                             <div className="h-32 w-32 flex" key={item.id}>
                               {/* product image */}
-                              <img src={ item.images || item.image } alt="" />
+                              <img src={item.images || item.image} alt="" />
                             </div>
 
                             <div className="mobile_view_buttons lg:hidden sm:flex md:flex flex-col justify-end gap-y-2  h-32 ml-3">
@@ -207,7 +207,10 @@ const Cart = () => {
                               </h3>
                               <p className="text-xs font-thin">
                                 {/* {item.description.substring(0, 70)}... */}
-                                { (item.description || item.productdetails).substring(0, 70) }...
+                                {(
+                                  item.description || item.productdetails
+                                ).substring(0, 70)}
+                                ...
                               </p>
                             </div>
                             {/* <button className="px-5 w-fit text-xs text-left font-semibold bg-black text-white py-2" onClick={()=>{addtowishlist(item)}}>
@@ -223,7 +226,7 @@ const Cart = () => {
                               </select>
 
                               <div className="flex">
-                              <button
+                                <button
                                   className="border-2 border-black-700 w-7 h-7"
                                   onClick={() => {
                                     handleQuantityMinusClick(item.id);
@@ -231,11 +234,11 @@ const Cart = () => {
                                 >
                                   -
                                 </button>
-                              
+
                                 <div className=" flex justify-center item-center border-2 border-black-700 items-center  w-7 h-7">
                                   {item.quantity || 1}
                                 </div>
-                              
+
                                 <button
                                   className="border-2 border-black-700 w-7 h-7"
                                   onClick={() => {

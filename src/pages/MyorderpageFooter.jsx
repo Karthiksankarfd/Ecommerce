@@ -18,9 +18,9 @@ const MyorderpageFooter = () => {
   let TotalItems = Object.keys(cart).length;
   return (
     <>
-    <div className="totalPrice_Container h-auto bg-white border-2 px-2  my-4 lg:w-2/5 sm:w-full">
+    <div className="totalPrice_Container h-auto bg-white border-2 px-2 py-2  my-4 lg:w-2/5 sm:w-full">
       <div className="mbsm">PRICE DETAILS({TotalItems}) items</div>
-      <div className="product_final_detail grid grid-cols-2 grid-rows-auto gap-y-3 ">
+      <div className="product_final_detail grid grid-cols-2 grid-rows-auto gap-y-3 pb-2">
         <div className="text-sm font-thin ">Total price</div>
         <div className="text-sm font-thin">₹{totalPrice}</div>
         <div className="text-sm font-thin">Discount On MRP</div>
@@ -38,9 +38,9 @@ const MyorderpageFooter = () => {
         <div className="text-sm font-thin">Payment</div>
         <div className="text-sm font-semibold text-blue-600 ">Cash On Delivery</div>
       </div>
-      <div className="col-span-2 bg-green-400 my-2 text-center">
+      <div className="col-span-2 bg-black text-white my-2 text-center py-2 rounded-lg">
         <Link to="" className="">
-          <button>Cancel Order</button>
+          <button cl>Cancel Order</button>
         </Link>
       </div>
     </div>

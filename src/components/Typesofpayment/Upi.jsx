@@ -1,6 +1,8 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 const Upi = () => {
+     // invoking usenavigate
+  const navigate = useNavigate()
   return (
     <div className='flex flex-col gap-y-5'>
       <div> Pay PhonePe/Google Pay/BHIM UPI</div>
@@ -13,8 +15,11 @@ const Upi = () => {
             </div>
 
             <div className='hidden group-hover:block '>
-            <input type="text" className='w-full py-4 border-2 border-slate-500 mb-2 focus:outline-neutral-400 px-5' placeholder='Enter UPI ID Here'  />
-            <button className='w-full bg-black text-white py-4 '>Pay Now</button>
+                <form action="/orderconfirmationpage">
+                <input type="text" required className='w-full py-4 border-2 border-slate-500 mb-2 focus:outline-neutral-400 px-5' placeholder='Enter UPI ID Here'  />
+            <button type='submit' className='w-full bg-black text-white py-4 'onClick={()=> navigate("")} >Pay Now</button>
+                </form>
+          
             </div>
             
         </div>
@@ -29,7 +34,7 @@ const Upi = () => {
 
             <div className='hidden group-hover:block '>
             <input type="text" className='w-full py-4 border-2 border-slate-500 mb-2 focus:outline-neutral-400 px-5' placeholder='Enter UPI ID Here'  />
-            <button className='w-full bg-black text-white py-4 '>Pay Now</button>
+            <button className='w-full bg-black text-white py-4 ' onClick={()=> navigate("/orderconfirmationpage")} >Pay Now</button>
             </div>
             
         </div>
@@ -45,7 +50,7 @@ const Upi = () => {
             <div className='hidden group-hover:block'>
          
             <input type="text" className='w-full py-4 border-2 border-slate-500 mb-2 px-5 ' placeholder='Enter UPI ID Here'  />
-            <button className='w-full bg-black text-white py-4 '>Pay Now</button>
+            <button className='w-full bg-black text-white py-4 ' onClick={()=> navigate("/orderconfirmationpage")} >Pay Now</button>
             </div>
             
         </div>

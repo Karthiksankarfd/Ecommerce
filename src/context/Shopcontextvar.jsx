@@ -2,9 +2,11 @@ import React, { createContext, useState, useEffect } from "react";
 // import { LogincontexProvider } from "../components/Authenticationcontext/Logincontext.jsx/LogincontexProvider";
 // Invoking and exporting the createContext hook
 import { useAuth } from "../components/Authenticationcontext/Logincontext.jsx/LogincontexProvider";
+
+//! initializing the createContext
 export const Shopcontext = createContext(null);
 
-const ShopcontextProvider = (props) => {
+const ShopcontextProvider = ({children}) => {
   // login context
   const auth = useAuth();
 
@@ -28,9 +30,16 @@ const ShopcontextProvider = (props) => {
   // for showing addtional info about the product
   const [productDetail, setProductDetail] = useState([]);
 
-  // for displaying the alert for existing product in cart
+  //! for displaying the alert for existing product in cart
   const [showAlert, setShowAlert] = useState(false);
 
+   //! for displaying the alert for existing product in cart
+   const [showAlertForCartItem, setShowAlertForCartItem] = useState(false);
+
+  // for loader
+  const [loading, setLoading] = useState(true);
+
+  // for checking the product existence in cart or wishlist
   let removeduplicate = cart.map((cartitem)=>{
     return cartitem.id
   })
@@ -45,7 +54,6 @@ const ShopcontextProvider = (props) => {
           // " https://api.escuelajs.co/api/v1/categories"
 
         );
-        
         const data = await response.json();
         setdata(data);
         // setdata(data.products);
@@ -56,15 +64,23 @@ const ShopcontextProvider = (props) => {
         const eledata = await electronisresponse.json();
         seteledata(eledata);
         console.log(eledata);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-
+  if (loading) {
+    // Render spinner while data is being fetched
+    return <div className="spinner w-full h-dvh flex flex-col justify-center items-center">
+      <div className="spinner-animated h-16 w-16 border-b-4 border-l-4  border-blue-400 animate-spin rounded-full"></div>
+      <h3>Loading...</h3>
+    </div>;
+  }
 
   const addTocart = (cartItem) => {
     if (auth.user ) {
@@ -78,6 +94,7 @@ const ShopcontextProvider = (props) => {
     setProductDetail(() => [ProductInfo]);
     console.log(productDetail, "showing product details ");
   };
+  // getting total value of cart array 
   let TotalItems = Object.keys(cart).length;
 
   // code for wishlist
@@ -114,12 +131,12 @@ const ShopcontextProvider = (props) => {
     myorderpage,
     eledata,
     seteledata,
-    showAlert, setShowAlert,removeduplicate
+    showAlert, setShowAlert,removeduplicate,showAlertForCartItem,setShowAlertForCartItem
   };
   // console.log(cart);
   return (
     <Shopcontext.Provider value={providerValue}>
-      {props.children}
+      {children}
     </Shopcontext.Provider>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
-import Video from "./Video.mp4"
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className=" px-10 h-72 bg-gradient-to-t from-black to-black flex flex-row   bg">
@@ -16,7 +17,7 @@ const Hero = () => {
           {/* <p className="font-thin ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt omnis porro architecto debitis unde quis praesentium maiores, eum voluptatum, sint nihil laborum delectus blanditiis adipisci distinctio
             </p> */}
 
-          <button className="text-xl bg-white-500 px-10 py-2 rounded-3xl text-neutral-500 border-2 border-neutral-500">
+          <button onClick={()=>navigate("/men")} className="text-xl bg-white-500 px-10 py-2 rounded-3xl text-neutral-500 border-2 border-neutral-500">
             Shop Now
           </button>
         </div>
@@ -47,7 +48,7 @@ const Hero = () => {
           </div>
 
           <div>
-            <button className="text-xl bg-white-500 px-10 py-2 rounded-3xl text-neutral-500 border-2 border-neutral-500">
+            <button onClick={()=>navigate("/men")} className="text-xl bg-white-500 px-10 py-2 rounded-3xl text-neutral-500 border-2 border-neutral-500">
               Shop Now
             </button>
           </div>

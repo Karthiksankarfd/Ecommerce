@@ -9,8 +9,9 @@ import { Shopcontext } from "../context/Shopcontextvar";
 import { motion } from "framer-motion";
 import Mainfooter from "./Mainfooter";
 import Rating from "../components/Rating/Rating";
+import AddedToCart from "../components/Modal/AddToCart";
 const Shop = () => {
-  const { showAlert } = useContext(Shopcontext);
+  const { showAlert,showAlertForCartItem } = useContext(Shopcontext);
   // const auth = useAuth();
   return (
     <>
@@ -29,6 +30,11 @@ const Shop = () => {
           <div className=" fixed  top-0 w-full ">
             <Cartalert />
           </div>
+        )}
+        {showAlertForCartItem && (
+           <div className=" fixed  top-0 w-full ">
+           <AddedToCart />
+         </div>
         )}
       </div>
 
